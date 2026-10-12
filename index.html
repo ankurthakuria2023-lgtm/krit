@@ -7,28 +7,29 @@
 <title>A little question for Kritika ♡</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Caveat:wght@500;600;700&display=swap');
-:root{--pink:#ffb9d0;--cream:#fff8ef;--mint:#c9ffdc;--glass:rgba(7,18,31,.65)}
+:root{--pink:#ffb9d0;--cream:#fff8ef;--mint:#c9ffdc}
 *{box-sizing:border-box}
 html{min-height:100%;background:#06111d;scroll-behavior:smooth}
 body{margin:0;min-height:100svh;color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-#aurora-video,#aurora-image,.shade,.stars{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
-#aurora-video{object-fit:cover;z-index:-4;background:#06111d}
-#aurora-image{z-index:-5;object-fit:cover;background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Severe%20Geomagnetic%20Storm%20Causes%20Visible%20Aurora%20in%20North%20America%20(NESDIS%202024-10-16).gif');background-size:cover;background-position:center}
-.shade{z-index:-3;background:linear-gradient(180deg,rgba(3,11,24,.42),rgba(4,14,27,.34) 38%,rgba(3,10,20,.77)),radial-gradient(ellipse at 50% 24%,transparent,rgba(2,8,18,.42))}
+#aurora-image,#aurora-video,.shade,.stars{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#aurora-image{z-index:-5;background:#06111d url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=2200&q=90') center/cover no-repeat}
+#aurora-video{z-index:-4;object-fit:cover}
+.shade{z-index:-3;background:linear-gradient(180deg,rgba(3,11,24,.35),rgba(4,14,27,.36) 38%,rgba(3,10,20,.78)),radial-gradient(ellipse at 50% 24%,transparent,rgba(2,8,18,.42))}
 .stars{z-index:-2;opacity:.7;background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 80px,#fff,transparent),radial-gradient(1.5px 1.5px at 160px 130px,#d9fff3,transparent),radial-gradient(1px 1px at 230px 50px,#fff,transparent);background-size:270px 180px;animation:twinkle 5s ease-in-out infinite alternate}
 @keyframes twinkle{from{opacity:.35}to{opacity:.85}}
-main{width:min(100% - 30px,850px);margin:0 auto;padding:clamp(24px,6vh,58px) 0 calc(32px + env(safe-area-inset-bottom));text-align:center}
+main{width:min(100% - 28px,850px);margin:0 auto;padding:clamp(24px,6vh,58px) 0 calc(32px + env(safe-area-inset-bottom));text-align:center}
 .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #ffffff35;background:#07152177;padding:9px 15px;border-radius:99px;font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;color:#d9f9ed;backdrop-filter:blur(12px)}
 h1{font-family:'Playfair Display',serif;font-weight:500;line-height:1.12;font-size:clamp(2.55rem,8.2vw,5.5rem);letter-spacing:-.04em;margin:27px 0 0;text-shadow:0 2px 30px #a8ffe766}
 h1 .script{font-family:'Caveat',cursive;font-weight:600;color:var(--pink);display:block;font-size:1.14em;letter-spacing:0;margin-top:4px}
 .name{font-family:'Caveat',cursive;font-size:clamp(2.5rem,7vw,4rem);color:#ffd0df;margin:0 0 12px}
-.intro{color:#e9f3f0;font-size:clamp(.94rem,2.7vw,1.08rem);line-height:1.7;max-width:540px;margin:0 auto}
 .flowers{font-size:1.45rem;letter-spacing:.45rem;margin:18px 0}
-.buttons{display:flex;align-items:center;justify-content:center;gap:18px;min-height:78px;margin:20px auto 28px;position:relative}
-.btn{font:600 1rem 'DM Sans',sans-serif;border-radius:999px;padding:14px 29px;min-width:124px;cursor:pointer;touch-action:manipulation;transition:transform .22s,box-shadow .22s,background .22s}
-#yesBtn{background:linear-gradient(135deg,#d5ffdd,#a9f3d0);color:#09291f;border:1px solid #e2ffea;box-shadow:0 0 28px #a5ffd74a}
-#yesBtn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 38px #a5ffd788}
-#noBtn{background:#0b1b2bbd;color:#fff4f5;border:1px solid #ffffff75;position:relative}
+.intro{color:#e9f3f0;font-size:clamp(.94rem,2.7vw,1.08rem);line-height:1.7;max-width:540px;margin:0 auto}
+.button-arena{position:relative;width:min(100%,430px);height:150px;margin:20px auto 12px;isolation:isolate}
+.btn{font:600 1rem 'DM Sans',sans-serif;border-radius:999px;padding:14px 22px;min-width:124px;min-height:48px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:left .18s ease,top .18s ease,transform .18s ease,box-shadow .22s;user-select:none}
+#yesBtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;background:linear-gradient(135deg,#d5ffdd,#a9f3d0);color:#09291f;border:1px solid #e2ffea;box-shadow:0 0 28px #a5ffd74a;white-space:nowrap}
+#yesBtn:hover{box-shadow:0 0 38px #a5ffd788}
+#noBtn{position:absolute;left:calc(50% + 82px);top:calc(50% + 30px);transform:translate(-50%,-50%);z-index:3;background:#0b1b2bed;color:#fff4f5;border:1px solid #ffffff75;white-space:nowrap;min-width:105px;padding:12px 18px}
+#toast{min-height:25px;font-size:.9rem;color:#ffe1e9;margin:0 auto 16px}
 .card{width:min(100%,620px);margin:0 auto;padding:clamp(22px,5vw,36px);border:1px solid #f7cfe17a;border-radius:26px;background:linear-gradient(145deg,rgba(7,22,36,.83),rgba(11,24,40,.68));box-shadow:0 20px 70px #0005;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .card h2{font:500 clamp(1.65rem,5vw,2.4rem) 'Playfair Display',serif;margin:0 0 13px;color:#ffd4e1}
 .card p{line-height:1.75;color:#f5f3f0;margin:0 auto 16px;max-width:500px}
@@ -38,18 +39,18 @@ input[type=date]{width:min(100%,320px);padding:13px 15px;border-radius:14px;bord
 #accepted{display:none;animation:rise .8s ease both}
 #accepted.show{display:block}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-#accepted h2{font-size:clamp(2rem,6vw,3.1rem)}
 .footer{font-family:'Caveat',cursive;font-size:1.45rem;color:#ffd0df;margin:27px auto 0;line-height:1.35}
-#toast{min-height:25px;font-size:.9rem;color:#ffe1e9;margin-top:5px}
 .heart{position:fixed;bottom:-30px;z-index:5;pointer-events:none;animation:floatUp 4s linear forwards;filter:drop-shadow(0 0 8px #ff9dbb88)}
 @keyframes floatUp{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
 @media(max-width:480px){
- main{width:min(100% - 24px,850px);padding-top:30px}
+ main{padding-top:30px}
  .eyebrow{font-size:.67rem;padding:8px 11px}
  h1{margin-top:23px}
  .intro{max-width:330px}
- .buttons{gap:10px;min-height:72px;margin:17px auto 23px}
- .btn{min-width:112px;padding:13px 18px;font-size:.95rem}
+ .button-arena{width:100%;height:155px;margin-top:16px}
+ .btn{font-size:.93rem;min-height:48px}
+ #yesBtn{min-width:126px}
+ #noBtn{min-width:100px;padding:12px 15px}
  .card{border-radius:22px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
@@ -66,7 +67,7 @@ input[type=date]{width:min(100%,320px);padding:13px 15px;border-radius:14px;bord
   <div class="flowers" aria-hidden="true">🌷 ✨ 🌼</div>
   <h1>Will you go on<br><span class="script">a date with me?</span></h1>
   <p class="name">Kritika ♡</p>
-  <div class="buttons" id="buttonZone">
+  <div class="button-arena" id="buttonArena">
     <button class="btn" id="yesBtn" type="button">♡ Yes, I will!</button>
     <button class="btn" id="noBtn" type="button">No 🙈</button>
   </div>
@@ -84,43 +85,103 @@ input[type=date]{width:min(100%,320px);padding:13px 15px;border-radius:14px;bord
   <div class="footer">Whatever the answer, you deserve all the<br>little things that make you smile. 🌌</div>
 </main>
 <script>
-const noBtn=document.getElementById('noBtn');
-const zone=document.getElementById('buttonZone');
-const toast=document.getElementById('toast');
-function dodgeNo(){
-  const z=zone.getBoundingClientRect(), b=noBtn.getBoundingClientRect();
-  const pad=8, maxX=Math.max(pad,z.width-b.width-pad), maxY=45;
-  noBtn.style.position='absolute';
-  noBtn.style.left=(pad+Math.random()*Math.max(0,maxX-pad))+'px';
-  noBtn.style.top=(-Math.random()*maxY)+'px';
-  toast.textContent=['Hehe, too quick! 🙈','That button is feeling shy 🌷','Try the other one? 💗','Not so fast, hehe ✨'][Math.floor(Math.random()*4)];
-}
-noBtn.addEventListener('pointerenter',dodgeNo);
-noBtn.addEventListener('pointerdown',e=>{e.preventDefault();dodgeNo()});
-noBtn.addEventListener('click',e=>{e.preventDefault();dodgeNo()});
-document.getElementById('yesBtn').addEventListener('click',()=>{
-  document.getElementById('accepted').classList.add('show');
-  toast.textContent='';
-  document.getElementById('accepted').scrollIntoView({behavior:'smooth',block:'center'});
-  for(let i=0;i<24;i++)setTimeout(makeHeart,i*90);
-});
-function makeHeart(){
-  const el=document.createElement('span');el.className='heart';
-  el.textContent=['💗','♡','🌸','✨','💖'][Math.floor(Math.random()*5)];
-  el.style.left=Math.random()*100+'vw';el.style.fontSize=(16+Math.random()*20)+'px';
-  el.style.animationDuration=(3+Math.random()*2)+'s';document.body.appendChild(el);
-  setTimeout(()=>el.remove(),5200);
-}
-document.getElementById('confirmDate').addEventListener('click',()=>{
-  const value=document.getElementById('dateChoice').value;
-  const out=document.getElementById('dateResult');
-  if(!value){out.textContent='Pick a day first, and we’ll make it a little more real 💌';return;}
-  const d=new Date(value+'T12:00:00');
-  out.textContent='A little date to look forward to: '+d.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' 💗 (Send me your choice so we can plan it together!)';
-});
-const video=document.getElementById('aurora-video');
-video.addEventListener('error',()=>{video.style.display='none'});
-video.play().catch(()=>{});
+(() => {
+  const arena = document.getElementById('buttonArena');
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const toast = document.getElementById('toast');
+  let lastSpot = -1;
+  const messages = ['Hehe, too quick! 🙈','That button is feeling shy 🌷','Try the other one? 💗','Not so fast, hehe ✨'];
+
+  // Places the No button only in safe spots around Yes, never on top of it.
+  function moveNoButton() {
+    const a = arena.getBoundingClientRect();
+    const n = noBtn.getBoundingClientRect();
+    const y = yesBtn.getBoundingClientRect();
+    const w = n.width || 105, h = n.height || 48;
+    const pad = 4;
+    const midX = a.width / 2, midY = a.height / 2;
+    const yesW = y.width, yesH = y.height;
+    const gap = 14;
+    const spots = [
+      {x: pad, y: pad},
+      {x: a.width-w-pad, y: pad},
+      {x: pad, y: a.height-h-pad},
+      {x: a.width-w-pad, y: a.height-h-pad},
+      {x: pad, y: midY-h/2},
+      {x: a.width-w-pad, y: midY-h/2},
+      {x: midX-w/2, y: pad},
+      {x: midX-w/2, y: a.height-h-pad}
+    ];
+    // Filter positions that stay within the arena and do not overlap the Yes button.
+    const safe = spots.filter(p => {
+      if (p.x < 0 || p.y < 0 || p.x+w > a.width || p.y+h > a.height) return false;
+      const overlaps = !(p.x+w+gap <= midX-yesW/2 ||
+                         p.x-gap >= midX+yesW/2 ||
+                         p.y+h+gap <= midY-yesH/2 ||
+                         p.y-gap >= midY+yesH/2);
+      return !overlaps;
+    });
+    if (!safe.length) return;
+    let index = Math.floor(Math.random()*safe.length);
+    if (safe.length > 1 && index === lastSpot) index = (index+1)%safe.length;
+    lastSpot = index;
+    noBtn.style.left = safe[index].x+'px';
+    noBtn.style.top = safe[index].y+'px';
+    noBtn.style.transform = 'none';
+    toast.textContent = messages[Math.floor(Math.random()*messages.length)];
+  }
+
+  // Desktop: flee on hover. Touch devices: move on touch/pointer down, before click.
+  noBtn.addEventListener('pointerenter', e => {
+    if (e.pointerType === 'mouse') moveNoButton();
+  });
+  noBtn.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    moveNoButton();
+  });
+  noBtn.addEventListener('touchstart', e => {
+    e.preventDefault();
+    moveNoButton();
+  }, {passive:false});
+  noBtn.addEventListener('click', e => {
+    e.preventDefault();
+    moveNoButton();
+  });
+  window.addEventListener('resize', () => {
+    noBtn.style.left = '';
+    noBtn.style.top = '';
+    noBtn.style.transform = 'translate(-50%,-50%)';
+    lastSpot = -1;
+  });
+
+  yesBtn.addEventListener('click', () => {
+    document.getElementById('accepted').classList.add('show');
+    toast.textContent = '';
+    document.getElementById('accepted').scrollIntoView({behavior:'smooth',block:'center'});
+    for (let i=0;i<24;i++) setTimeout(makeHeart,i*90);
+  });
+  function makeHeart() {
+    const el = document.createElement('span');
+    el.className='heart';
+    el.textContent=['💗','♡','🌸','✨','💖'][Math.floor(Math.random()*5)];
+    el.style.left=Math.random()*100+'vw';
+    el.style.fontSize=(16+Math.random()*20)+'px';
+    el.style.animationDuration=(3+Math.random()*2)+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),5200);
+  }
+  document.getElementById('confirmDate').addEventListener('click', () => {
+    const value=document.getElementById('dateChoice').value;
+    const out=document.getElementById('dateResult');
+    if (!value) { out.textContent='Pick a day first, and we’ll make it a little more real 💌'; return; }
+    const d=new Date(value+'T12:00:00');
+    out.textContent='A little date to look forward to: '+d.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' 💗 (Send me your choice so we can plan it together!)';
+  });
+  const video=document.getElementById('aurora-video');
+  video.addEventListener('error',()=>{video.style.display='none'});
+  video.play().catch(()=>{});
+})();
 </script>
 </body>
 </html>
