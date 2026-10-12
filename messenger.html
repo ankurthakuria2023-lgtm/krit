@@ -1,47 +1,1086 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff7fa"><title>Messages · A Little Something 🌷</title>
-<link rel="manifest" href="./manifest.webmanifest">
-<style>
-:root{--ink:#35252e;--muted:#8d7782;--pink:#c45e88;--pink2:#fbe5ee;--line:#f0e4e9;--paper:#fff;--wash:#fff8fb;--shadow:0 18px 55px #6d365016}*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#fff8fb,#fffdf8 55%,#f8f3ff);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}.topbar{height:72px;border-bottom:1px solid #f0e4e9;background:#ffffffd9;backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 1180px)/2));position:sticky;top:0;z-index:10}.brand{font:1.55rem Georgia,serif;letter-spacing:-.7px;color:#503443;text-decoration:none}.brand span{color:var(--pink)}.top-actions{display:flex;align-items:center;gap:10px}.icon-btn,.soft-btn{border:1px solid var(--line);background:white;color:#6b4c5a;border-radius:999px;padding:10px 14px}.icon-btn{width:42px;height:42px;padding:0;font-size:1.15rem}.page{width:100%;max-width:none;margin:0;padding:0}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);height:calc(100dvh - 72px);min-height:0;background:var(--paper);border:0;border-radius:0;overflow:hidden;box-shadow:none}.people{border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.people-head{padding:23px 20px 16px;display:flex;align-items:center;justify-content:space-between}.people-head h1{font:1.55rem Georgia,serif;margin:0}.tiny-note{color:var(--muted);font-size:.82rem}.search{margin:0 15px 15px;background:#faf6f8;border:1px solid #f3e9ed;border-radius:12px;padding:11px 13px;color:var(--muted);font-size:.9rem}.person{display:flex;gap:12px;align-items:center;padding:15px 17px;background:#fff5f9;border-top:1px solid #fff0f5;border-bottom:1px solid #f7e8ee}.avatar{width:47px;height:47px;border-radius:50%;display:grid;place-items:center;flex:none;background:linear-gradient(135deg,#f8bfd3,#eadcff);border:2px solid white;box-shadow:0 0 0 1px #f1dce6;font-size:1.35rem}.person-name{font-weight:650;font-size:.94rem}.person-preview{font-size:.8rem;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.online{margin-left:auto;width:9px;height:9px;border-radius:50%;background:#6fc39b;box-shadow:0 0 0 3px #e6f7ee}.sidebar-bottom{margin-top:auto;padding:16px;color:var(--muted);font-size:.78rem;line-height:1.6}.chat{display:flex;flex-direction:column;min-width:0;min-height:0}.chat-head{height:78px;flex:none;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:14px 22px}.chat-head .person-name{font-size:1rem}.chat-head .tiny-note{margin-top:4px}.head-tools{margin-left:auto;display:flex;gap:8px}.chat-stream{flex:1;min-height:0;overflow:auto;padding:22px clamp(14px,4vw,45px);display:flex;flex-direction:column;gap:14px;background:radial-gradient(ellipse at 50% 0%,#fff8fb,transparent 70%)}.date-pill{align-self:center;border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:#fff;color:#a28a96;font-size:.72rem;margin:2px 0 8px}.message-row{display:flex;flex-direction:column;max-width:min(75%,440px);align-self:flex-start;gap:5px}.message-row.mine{align-self:flex-end;align-items:flex-end}.bubble{background:#f8f2f5;border:1px solid #f1e8ed;padding:12px 15px;border-radius:18px 18px 18px 5px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;font-size:.94rem}.mine .bubble{background:linear-gradient(135deg,#d66b98,#bb5c87);color:white;border-color:transparent;border-radius:18px 18px 5px 18px;box-shadow:0 7px 16px #c45e8820}.bubble img{display:block;max-width:100%;max-height:260px;border-radius:12px;margin-top:8px;object-fit:cover}.message-meta{font-size:.69rem;color:#a28a96;padding:0 4px}.reply-link{font-size:.72rem;color:#b0527c;border:0;background:transparent;padding:2px 4px}.empty-state{margin:auto;text-align:center;max-width:290px;color:var(--muted);line-height:1.7}.empty-heart{font-size:2.5rem;display:block;margin-bottom:10px}.compose-wrap{border-top:1px solid var(--line);padding:15px 18px 17px;background:#fff}.replying{display:none;font-size:.78rem;color:#9d5b79;margin:0 0 8px 6px}.compose{display:flex;align-items:flex-end;gap:10px;background:#fbf7f9;border:1px solid #eee2e8;border-radius:18px;padding:8px}.compose textarea{border:0;outline:0;resize:none;min-height:43px;max-height:120px;flex:1;background:transparent;padding:11px 7px;color:var(--ink);line-height:1.45}.compose-tools{display:flex;gap:8px;align-items:center;padding-bottom:3px}.round-tool{display:grid;place-items:center;width:40px;height:40px;border:1px solid #f0dbe5;background:#fff;color:#b85d84;border-radius:50%;font-size:1.35rem;line-height:1;text-decoration:none;transition:transform .2s,background .2s;cursor:pointer}.round-tool:hover{transform:translateY(-2px);background:#fff0f6}.reminder-trigger{font-size:1.05rem}.reminder-trigger[aria-expanded="true"]{background:#fbe5ee;border-color:#e8b8cd}.send{border:0;background:linear-gradient(135deg,#d76c99,#b95580);color:white;border-radius:13px;padding:11px 17px;font-weight:650;box-shadow:0 6px 14px #c45e8828}.under-compose{display:flex;justify-content:space-between;gap:10px;padding:8px 4px 0;font-size:.72rem;color:#b09aa5}.reminders{width:min(480px,calc(100vw - 24px));max-height:min(82dvh,760px);overflow:auto;margin:0;background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:25px;box-shadow:0 30px 100px #32172835}.reminder-overlay{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:flex-end;padding:18px;background:#24121f55;backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .24s}.reminder-overlay.open{opacity:1;pointer-events:auto}.reminder-overlay .reminders{transform:translateX(24px);transition:transform .28s cubic-bezier(.2,.8,.2,1)}.reminder-overlay.open .reminders{transform:translateX(0)}.reminder-close{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:50%;width:36px;height:36px;font-size:1.15rem}.reminder-heading{display:flex;align-items:flex-start;gap:12px}.reminder-heading .reminder-head{flex:1}.reminder-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.reminder-head h2{font:1.4rem Georgia,serif;margin:0}.reminder-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.reminder-form input{border:1px solid var(--line);border-radius:11px;padding:11px 12px;min-width:150px;background:#fff;color:var(--ink)}.reminder-form input[type=text]{flex:1}.reminder-list{display:grid;gap:8px;margin-top:12px}.reminder-item{display:flex;gap:10px;align-items:center;padding:11px 12px;border:1px solid #f1e7ec;border-radius:12px;background:#fff}.reminder-item.done .reminder-title{text-decoration:line-through;opacity:.6}.reminder-title{font-size:.9rem;flex:1}.reminder-time{font-size:.75rem;color:var(--muted)}.mini-check{accent-color:var(--pink)}.status{font-size:.78rem;color:var(--muted)}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#543644;color:#fff;border-radius:99px;padding:11px 16px;opacity:0;transition:.2s;pointer-events:none;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}.auth-gate{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 20% 20%,#f9dbe7,transparent 35%),linear-gradient(135deg,#fff8fb,#f7f1ff);display:grid;place-items:center;padding:20px}.auth-card{width:min(410px,100%);padding:34px;border:1px solid #fff;border-radius:28px;background:#ffffffdc;backdrop-filter:blur(20px);box-shadow:0 25px 80px #6d365022;text-align:center}.auth-card h2{font:2rem Georgia,serif;margin:12px 0 8px}.auth-card p{color:var(--muted);line-height:1.6;font-size:.92rem}.auth-card input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;margin:6px 0;background:white}.auth-card button{width:100%;padding:13px;margin-top:8px}.auth-error{min-height:22px;color:#b42348;font-size:.82rem}.hidden{display:none!important}body.dark{--ink:#f3eaf0;--muted:#bcaab5;--line:#302435;--paper:#17121c;--wash:#1d1622;background:linear-gradient(145deg,#0b0913,#19101f 55%,#120f22);color:var(--ink)}body.dark .topbar,body.dark .reminders,body.dark .compose-wrap{background:#17121ce8;border-color:var(--line)}body.dark .brand{color:#f7e9f0}body.dark .layout{border-color:var(--line)}body.dark .people{border-color:var(--line)}body.dark .person{background:#2b1b2b;border-color:#382338}body.dark .search,body.dark .compose,body.dark .reminder-item,body.dark .reminder-form input,body.dark .bubble,body.dark .date-pill{background:#211925;border-color:#382b3b;color:var(--ink)}body.dark .mine .bubble{background:linear-gradient(135deg,#b95e8c,#844d91);color:white}body.dark .chat-stream{background:radial-gradient(ellipse at 50% 0%,#241728,transparent 70%)}body.dark .auth-gate{background:radial-gradient(circle at 20% 20%,#392039,transparent 35%),linear-gradient(135deg,#100b17,#1a1021)}body.dark .auth-card{background:#211927e8;border-color:#423044}body.dark .auth-card input{background:#19131f;border-color:#423044;color:var(--ink)}body.dark .icon-btn,body.dark .soft-btn{background:#211925;color:var(--ink);border-color:var(--line)}@media(max-width:760px){.topbar{height:62px;padding:0 14px}.brand{font-size:1.25rem}.page{padding:0;margin:0}.layout{display:block;height:calc(100dvh - 62px);min-height:0;border-radius:0;border-left:0;border-right:0}.people{display:none}.chat-head{height:67px;padding:10px 14px}.chat-stream{padding:16px 12px}.message-row{max-width:88%}.compose-wrap{padding:10px}.compose{gap:4px;padding:5px}.compose textarea{min-height:40px;padding:8px 5px}.round-tool{width:32px;height:32px}.send{padding:10px 12px}.under-compose{font-size:.66rem}.reminders{padding:20px;border-radius:22px}.reminder-overlay{align-items:flex-end;justify-content:center;padding:8px}.reminders{width:100%;max-height:85dvh}.reminder-form input[type=datetime-local]{flex:1}.head-tools .soft-btn{font-size:.76rem;padding:8px}.top-actions .soft-btn{padding:8px 10px;font-size:.8rem}}@media(min-width:761px){.chat-stream{padding:28px clamp(24px,6vw,100px)}.chat-head{padding:16px 32px}.compose-wrap{padding:18px 30px 15px}.people-head{padding:27px 24px 18px}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="A private little universe for two.">
+  <title>Our inbox ✦</title>
+  <link rel="manifest" href="./manifest.webmanifest">
 
-/* Full-page, refined messenger finish */
-.topbar{height:72px;padding:0 28px;border-bottom-color:#f2e5eb;box-shadow:0 4px 22px #653c4d08}
-.chat{background:linear-gradient(180deg,#fff 0%,#fffafd 100%)}
-.chat-head{background:#ffffffed;backdrop-filter:blur(16px)}
-.chat-stream{background:radial-gradient(ellipse at 50% 0%,#fff0f6 0,transparent 55%),linear-gradient(180deg,#fffafd,#fff 70%)}
-.people{background:linear-gradient(180deg,#fffafd,#fff)}
-.people-head h1{letter-spacing:-.6px;font-size:1.7rem}
-.person{border-radius:17px;margin:4px 12px;padding:14px;background:linear-gradient(110deg,#fff0f6,#fff9fc);border:1px solid #f8e5ed}
-.search{border-radius:14px;margin:0 16px 16px;background:#f9f5f7}
-.avatar{box-shadow:0 0 0 4px #fff,0 0 0 5px #f2dce6}
-.bubble{box-shadow:0 3px 12px #55304008;transition:transform .18s ease}
-.message-row:hover .bubble{transform:translateY(-1px)}
-.mine .bubble{background:linear-gradient(135deg,#d96f9e,#b95886 90%);box-shadow:0 8px 22px #c45e8828}
-.compose-wrap{background:#ffffffed;backdrop-filter:blur(18px)}
-.compose{border-radius:22px;background:#fffafd;border-color:#efdee6;padding:7px 8px 7px 15px;box-shadow:0 4px 16px #61344908}
-.compose textarea{font-size:.96rem}
-.send{border-radius:15px;transition:transform .18s,box-shadow .18s}
-.send:hover{transform:translateY(-1px);box-shadow:0 9px 20px #c45e8835}
-.soft-btn,.icon-btn{transition:background .18s,border-color .18s,transform .18s}
-.soft-btn:hover,.icon-btn:hover{transform:translateY(-1px);border-color:#e4bfd0;background:#fff6fa}
-.reminder-trigger{width:40px;height:40px;display:grid;place-items:center;border:1px solid #f0dbe5;background:#fff;color:#b85d84;border-radius:50%;font-size:1.08rem;line-height:1;transition:transform .2s,background .2s}
-.reminder-trigger:hover{transform:translateY(-2px);background:#fff0f6}
-.reminder-head h2{font-size:1.6rem;letter-spacing:-.4px}
-.reminder-item{padding:13px;border-radius:14px}
-body.dark .chat{background:linear-gradient(180deg,#17121c,#120e17)}body.dark .chat-head,body.dark .people,body.dark .compose-wrap{background:#17121ceb}body.dark .chat-stream{background:radial-gradient(ellipse at 50% 0%,#2b1a2b,transparent 60%),#120e17}body.dark .person{background:#2b1b2b}body.dark .compose{background:#211925;border-color:var(--line)}body.dark .round-tool,body.dark .reminder-trigger{background:#211925;border-color:var(--line);color:#e8a3c3}
-@media(max-width:760px){.topbar{padding:0 12px}.top-actions{gap:6px}.top-actions .soft-btn{padding:8px 9px}.layout{height:calc(100dvh - 62px)}.chat-stream{padding:17px 13px}.compose-wrap{padding:10px 9px calc(10px + env(safe-area-inset-bottom))}.under-compose{padding:7px 5px 0}.reminder-overlay{padding:0}.reminders{border-radius:24px 24px 0 0;padding:22px 18px calc(22px + env(safe-area-inset-bottom));max-height:88dvh}}
-</style>
-</head><body>
-<header class="topbar"><a class="brand" href="./index.html">A Little Something <span>♡</span></a><div class="top-actions"><button class="soft-btn" id="themeBtn" type="button">☾ Night mode</button><button class="soft-btn" id="pushBtn" type="button">♧ Notifications</button><button class="soft-btn" id="logoutBtn" type="button">Sign out</button></div></header>
-<main class="page"><section class="layout" aria-label="Private messages"><aside class="people"><div class="people-head"><h1>Messages</h1><span style="color:#c45e88;font-size:1.3rem">♡</span></div><div class="search">⌕ &nbsp; Our little corner</div><div class="person"><div class="avatar">🌷</div><div style="min-width:0"><div class="person-name">Just us two</div><div class="person-preview" id="sidebarPreview">A little something, just for you…</div></div><span class="online"></span></div><div class="sidebar-bottom">A private little space for words, photos, and all the things we want to remember. <br><span id="loginStatus">Checking your session…</span></div></aside>
-<section class="chat"><div class="chat-head"><a href="./index.html" class="avatar" style="text-decoration:none">🌷</a><div><div class="person-name">Our little inbox <span style="color:#c45e88">♡</span></div><div class="tiny-note" id="chatStatus">A private conversation · just us</div></div><div class="head-tools"><button class="soft-btn" id="refreshBtn" type="button">↻ Refresh</button></div></div>
-<div class="chat-stream" id="chatLog" aria-live="polite"><div class="empty-state"><span class="empty-heart">💌</span><strong>Your story goes here.</strong><br>Send a message, a tiny thought, or a photo that made you think of each other.</div></div>
-<div class="compose-wrap"><div class="replying" id="replyingTo"></div><div class="compose"><textarea id="messageText" maxlength="5000" rows="1" placeholder="Message… write your heart out" aria-label="Message"></textarea><div class="compose-tools"><label class="round-tool" title="Add a photo" aria-label="Add a photo" for="photoInput">＋</label><input id="photoInput" type="file" accept="image/*" capture="environment" hidden><button class="reminder-trigger" id="reminderBtn" type="button" aria-label="Open reminders" aria-expanded="false" title="Little reminders">♧</button><button class="send" id="sendBtn" type="button">Send</button></div></div><div class="under-compose"><span>✨ Delivered with a little love</span><span id="sendStatus">Private · synced across devices</span></div></div></section></section>
-<div class="reminder-overlay" id="reminderOverlay" aria-hidden="true"><section class="reminders" role="dialog" aria-modal="true" aria-labelledby="reminderTitleHeading"><div class="reminder-heading"><div class="reminder-head"><h2 id="reminderTitleHeading">Little reminders 🌷</h2><span class="status">Tiny things worth remembering</span></div><button class="reminder-close" id="closeReminders" type="button" aria-label="Close reminders">×</button></div><form class="reminder-form" id="reminderForm"><input type="text" id="reminderTitle" maxlength="180" placeholder="Remember to drink water…" required><input type="datetime-local" id="reminderDue" required><button class="send" type="submit">Add reminder ＋</button></form><div class="reminder-list" id="reminderList"><div class="status">Your shared reminders will appear here after signing in.</div></div></section></div>
-</main><div class="toast" id="toast"></div>
-<div class="auth-gate" id="authGate"><form class="auth-card" id="loginForm"><div style="font-size:2.7rem">🌷💌</div><h2>Just us two</h2><p>Some conversations deserve their own little place.<br>Sign in to open yours.</p><input id="loginEmail" type="email" placeholder="Email address" autocomplete="username" required><input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" required><button class="send" type="submit">Open our inbox ✨</button><div class="auth-error" id="loginError" role="status"></div><div class="status">Private access for the two invited accounts.</div></form></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="./supabase-config.js"></script><script src="./messenger.js"></script>
-</body></html>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(16, 24, 42, .84);
+      --panel-light: rgba(255, 255, 255, .055);
+      --border: rgba(255, 255, 255, .12);
+      --text: #f3f2ff;
+      --muted: #a6b0ca;
+      --mint: #a8f0dc;
+      --lavender: #c4b6ff;
+      --pink: #f1a9d0;
+      --shadow: 0 20px 60px rgba(0, 0, 0, .25);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      color: var(--text);
+      background: var(--bg);
+      font-family: Inter, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: 3px;
+    }
+
+    /* Starry universe */
+    .cosmos {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 12% 85%, #38245a70, transparent 42%),
+        radial-gradient(ellipse at 88% 24%, #15505b70, transparent 42%),
+        radial-gradient(ellipse at 50% 0%, #1a2948, transparent 65%),
+        #090e1c;
+    }
+
+    .starfield,
+    .starfield::before,
+    .starfield::after {
+      position: absolute;
+      inset: -20%;
+      content: "";
+      background-image:
+        radial-gradient(1px 1px at 8% 18%, white 95%, transparent),
+        radial-gradient(2px 2px at 21% 64%, #dceaff 95%, transparent),
+        radial-gradient(1px 1px at 36% 27%, white 95%, transparent),
+        radial-gradient(1px 1px at 49% 78%, #d7fff2 95%, transparent),
+        radial-gradient(2px 2px at 67% 16%, white 95%, transparent),
+        radial-gradient(1px 1px at 78% 56%, white 95%, transparent),
+        radial-gradient(1px 1px at 91% 33%, #d7fff2 95%, transparent);
+      background-size: 390px 320px;
+      opacity: .55;
+      animation: twinkle 7s ease-in-out infinite alternate;
+    }
+
+    .starfield::before {
+      transform: translate(75px, 45px) scale(1.2);
+      opacity: .35;
+      animation-delay: -3s;
+    }
+
+    .starfield::after {
+      transform: translate(-35px, -55px) scale(.8);
+      opacity: .5;
+      animation-delay: -5s;
+    }
+
+    @keyframes twinkle {
+      from { opacity: .25; }
+      to { opacity: .75; }
+    }
+
+    /* Moving aurora ribbons */
+    .aurora {
+      position: absolute;
+      width: 78vw;
+      height: 55vh;
+      top: -10%;
+      left: 10%;
+      border-radius: 50%;
+      filter: blur(48px);
+      mix-blend-mode: screen;
+      opacity: .2;
+      will-change: transform;
+    }
+
+    .aurora-one {
+      background: linear-gradient(
+        115deg, transparent 4%, #38e3c2 24%,
+        #7d74ff 43%, #3fdfba 61%, transparent 84%
+      );
+      animation: aurora 19s ease-in-out infinite alternate;
+    }
+
+    .aurora-two {
+      top: 0;
+      left: 32%;
+      opacity: .17;
+      background: linear-gradient(
+        110deg, transparent, #4f84ff 22%,
+        #dd70e8 47%, #4ae5bd 72%, transparent
+      );
+      animation: aurora 25s ease-in-out infinite alternate-reverse;
+    }
+
+    .aurora-three {
+      top: 20%;
+      left: -5%;
+      opacity: .13;
+      background: linear-gradient(
+        100deg, transparent, #45e6c0 30%,
+        #7283ff 58%, transparent
+      );
+      animation: aurora 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes aurora {
+      0% {
+        transform: translate(-5vw, -1vh) rotate(-18deg) scaleX(.85);
+      }
+      50% { opacity: .3; }
+      100% {
+        transform: translate(9vw, 5vh) rotate(-8deg) scaleX(1.15);
+      }
+    }
+
+    /* Floating flowers */
+    .petal-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .falling-petal {
+      position: absolute;
+      top: -45px;
+      left: var(--left);
+      font-size: var(--size);
+      opacity: 0;
+      filter: drop-shadow(0 2px 8px #f0a9d044);
+      animation: falling var(--duration) linear var(--delay) infinite;
+      will-change: transform;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+        opacity: 0;
+      }
+      10%, 85% { opacity: var(--opacity); }
+      100% {
+        transform: translate3d(var(--drift), 110vh, 0) rotate(460deg);
+        opacity: 0;
+      }
+    }
+
+    /* Header */
+    .topbar {
+      position: relative;
+      z-index: 10;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 0 25px;
+      background: rgba(10, 16, 30, .78);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+    }
+
+    .brand {
+      color: var(--text);
+      text-decoration: none;
+      font: 1.7rem Georgia, serif;
+      letter-spacing: -.8px;
+      white-space: nowrap;
+    }
+
+    .brand span { color: var(--mint); }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .soft-btn, .icon-btn {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel-light);
+      color: #e5e8fa;
+      padding: 9px 12px;
+      transition: background .2s, border-color .2s;
+    }
+
+    .soft-btn:hover, .icon-btn:hover {
+      background: rgba(255, 255, 255, .12);
+      border-color: #a8f0dc70;
+    }
+
+    /* Full-page messenger */
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      height: calc(100dvh - 70px);
+      min-height: 0;
+      overflow: hidden;
+      background: rgba(14, 21, 37, .62);
+      backdrop-filter: blur(15px);
+    }
+
+    /* Conversation sidebar */
+    .people {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border-right: 1px solid var(--border);
+      background: rgba(13, 20, 35, .68);
+    }
+
+    .people-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px 20px 17px;
+    }
+
+    .people-head h1 {
+      margin: 0;
+      font: 1.5rem Georgia, serif;
+    }
+
+    .tiny-note {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .search {
+      margin: 0 14px 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .045);
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 4px 10px;
+      padding: 13px;
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 17px;
+      background: linear-gradient(
+        115deg, rgba(255,255,255,.09),
+        rgba(255,255,255,.025)
+      );
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,.65);
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a5f2dc, #c6b7ff);
+      color: #1b2638;
+      font-size: 1.35rem;
+    }
+
+    .person-name {
+      font-size: .94rem;
+      font-weight: 650;
+    }
+
+    .person-preview {
+      overflow: hidden;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .77rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .online {
+      width: 8px;
+      height: 8px;
+      flex: none;
+      margin-left: auto;
+      border-radius: 50%;
+      background: #71e6bd;
+      box-shadow: 0 0 0 4px #71e6bd20;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 18px;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.7;
+    }
+
+    /* Chat panel */
+    .chat {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .chat-head {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 76px;
+      padding: 13px 23px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 40, .72);
+      backdrop-filter: blur(22px);
+    }
+
+    .chat-head .person-name { font-size: .98rem; }
+    .chat-head .tiny-note { margin-top: 4px; }
+
+    .head-tools {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .chat-stream {
+      position: relative;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 17px;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 25px clamp(14px, 4vw, 50px);
+      background:
+        radial-gradient(ellipse at 12% 12%, #59dfc109, transparent 40%),
+        radial-gradient(ellipse at 90% 85%, #9a81ff0d, transparent 42%);
+      scrollbar-width: thin;
+      scrollbar-color: #ffffff30 transparent;
+    }
+
+    .date-pill {
+      align-self: center;
+      margin: 3px 0 9px;
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: rgba(255,255,255,.055);
+      color: #b9c2dc;
+      font-size: .7rem;
+      backdrop-filter: blur(12px);
+    }
+
+    /* Modern, readable chat bubbles */
+    .message-row {
+      display: flex;
+      flex-direction: column;
+      align-self: flex-start;
+      gap: 5px;
+      max-width: min(72%, 520px);
+      animation: messageIn .2s ease-out both;
+    }
+
+    .message-row.mine {
+      align-self: flex-end;
+      align-items: flex-end;
+    }
+
+    @keyframes messageIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bubble {
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 20px 20px 20px 6px;
+      background: linear-gradient(145deg, #263149f5, #192439f5);
+      color: #eff2ff;
+      box-shadow: 0 8px 22px #0002;
+      font-size: .94rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .mine .bubble {
+      border-color: #d7fff3;
+      border-radius: 20px 20px 6px 20px;
+      background: linear-gradient(135deg, #b7f1df, #8ed8d0);
+      color: #142b32;
+      box-shadow: 0 8px 24px #5ed9bd20;
+    }
+
+    .bubble img {
+      display: block;
+      max-width: 100%;
+      max-height: 340px;
+      margin-top: 8px;
+      border: 1px solid #ffffff20;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    .message-meta {
+      padding: 0 5px;
+      color: #aab4ce;
+      font-size: .68rem;
+    }
+
+    .reply-link {
+      padding: 3px 5px;
+      border: 0;
+      background: transparent;
+      color: #a8eddd;
+      font-size: .72rem;
+    }
+
+    .reply-link:hover { text-decoration: underline; }
+
+    .empty-state {
+      max-width: 300px;
+      margin: auto;
+      color: #b9c4dc;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .empty-heart {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 2.7rem;
+      filter: drop-shadow(0 0 18px #a7f0dc33);
+    }
+
+    /* Composer */
+    .compose-wrap {
+      position: relative;
+      z-index: 2;
+      padding: 13px 18px 15px;
+      border-top: 1px solid var(--border);
+      background: rgba(15, 23, 40, .83);
+      backdrop-filter: blur(24px);
+    }
+
+    .replying {
+      display: none;
+      margin: 0 0 8px 8px;
+      color: #a8eddd;
+      font-size: .78rem;
+    }
+
+    .compose {
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      padding: 7px 8px 7px 15px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 23px;
+      background: rgba(7, 13, 25, .72);
+      box-shadow: 0 12px 35px #0002;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .compose:focus-within {
+      border-color: #85ddcf80;
+      box-shadow: 0 0 0 3px #85ddcf12, 0 12px 35px #0002;
+    }
+
+    .compose textarea {
+      flex: 1;
+      min-width: 0;
+      min-height: 42px;
+      max-height: 120px;
+      padding: 11px 5px;
+      border: 0;
+      outline: 0;
+      resize: none;
+      background: transparent;
+      color: #f4f4ff;
+      font-size: .94rem;
+      line-height: 1.5;
+    }
+
+    .compose textarea::placeholder { color: #929db7; }
+
+    .compose-tools {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding-bottom: 2px;
+    }
+
+    .round-tool, .reminder-trigger {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      flex: none;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(255,255,255,.055);
+      color: var(--mint);
+      font-size: 1.35rem;
+      line-height: 1;
+      transition: transform .2s, background .2s;
+    }
+
+    .round-tool:hover, .reminder-trigger:hover {
+      transform: translateY(-2px);
+      background: #8ce8d51c;
+    }
+
+    .reminder-trigger[aria-expanded="true"] {
+      background: #8ce8d520;
+      border-color: #8ce8d580;
+    }
+
+    .send {
+      padding: 11px 17px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #a8f0dc, #8bd8d4);
+      color: #132c32;
+      font-weight: 700;
+      box-shadow: 0 6px 18px #70ddc21c;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .send:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 24px #70ddc233;
+    }
+
+    .under-compose {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 5px 0;
+      color: #aab4ce;
+      font-size: .7rem;
+    }
+
+    /* Reminders drawer */
+    .reminder-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 18px;
+      background: #050814aa;
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s;
+    }
+
+    .reminder-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .reminders {
+      width: min(480px, calc(100vw - 24px));
+      max-height: min(82dvh, 760px);
+      overflow: auto;
+      margin: 0;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: rgba(16, 24, 42, .97);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+      transform: translateX(24px);
+      transition: transform .28s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reminder-overlay.open .reminders { transform: translateX(0); }
+
+    .reminder-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .reminder-heading .reminder-head { flex: 1; }
+
+    .reminder-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .reminder-head h2 {
+      margin: 0;
+      font: 1.4rem Georgia, serif;
+    }
+
+    .reminder-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      font-size: 1.2rem;
+    }
+
+    .reminder-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .reminder-form input {
+      min-width: 140px;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: #0c1424;
+      color: var(--text);
+    }
+
+    .reminder-form input[type="text"] { flex: 1; }
+
+    .reminder-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .reminder-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .reminder-item.done .reminder-title {
+      text-decoration: line-through;
+      opacity: .6;
+    }
+
+    .reminder-title { flex: 1; font-size: .9rem; }
+    .reminder-time { color: var(--muted); font-size: .72rem; }
+    .mini-check { accent-color: var(--mint); }
+    .status { color: var(--muted); font-size: .78rem; }
+
+    /* Toast notifications */
+    .toast {
+      position: fixed;
+      z-index: 100;
+      bottom: 22px;
+      left: 50%;
+      max-width: calc(100vw - 28px);
+      padding: 11px 17px;
+      border-radius: 99px;
+      background: #d7fff3;
+      color: #173137;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 20px);
+      transition: opacity .2s, transform .2s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* Login screen */
+    .auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(ellipse at 50% 0%, #244b54aa, transparent 45%),
+        linear-gradient(145deg, #0b1020, #17122a 65%, #10242d);
+    }
+
+    .auth-card {
+      width: min(410px, 100%);
+      padding: 34px;
+      border: 1px solid #ffffff24;
+      border-radius: 27px;
+      background: rgba(17, 24, 42, .9);
+      box-shadow: 0 30px 100px #0005;
+      text-align: center;
+      backdrop-filter: blur(26px);
+    }
+
+    .auth-card h2 {
+      margin: 12px 0 8px;
+      font: 2rem Georgia, serif;
+    }
+
+    .auth-card p {
+      color: #b1bdd5;
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+    .auth-card input {
+      width: 100%;
+      margin: 6px 0;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #0a1120;
+      color: var(--text);
+    }
+
+    .auth-card input::placeholder { color: #8f9ab5; }
+    .auth-card button { width: 100%; margin-top: 10px; }
+    .auth-error { min-height: 22px; color: #ffb3c9; font-size: .82rem; }
+    .hidden { display: none !important; }
+
+    /* Mobile */
+    @media (max-width: 760px) {
+      .topbar {
+        height: 62px;
+        padding: 0 12px;
+        gap: 8px;
+      }
+
+      .brand { font-size: 1.35rem; }
+      .top-actions { gap: 5px; }
+      .top-actions .soft-btn { padding: 8px; font-size: .7rem; }
+
+      .layout {
+        display: block;
+        height: calc(100dvh - 62px);
+      }
+
+      .people { display: none; }
+      .chat-head { min-height: 65px; padding: 10px 13px; }
+      .chat-stream { padding: 17px 12px; gap: 15px; }
+      .message-row { max-width: 87%; }
+      .bubble { padding: 11px 14px; font-size: .92rem; }
+
+      .compose-wrap {
+        padding: 10px 9px calc(10px + env(safe-area-inset-bottom));
+      }
+
+      .compose { gap: 5px; padding: 5px 6px 5px 10px; }
+      .compose textarea { min-height: 40px; padding: 8px 3px; }
+      .compose-tools { gap: 5px; }
+      .round-tool, .reminder-trigger { width: 33px; height: 33px; font-size: 1.1rem; }
+      .send { padding: 10px 12px; }
+      .under-compose { font-size: .63rem; }
+      .aurora { width: 120vw; left: -10%; filter: blur(34px); }
+      .reminder-overlay { padding: 0; }
+      .reminders {
+        align-self: flex-end;
+        width: 100%;
+        max-height: 88dvh;
+        padding: 22px 18px calc(22px + env(safe-area-inset-bottom));
+        border-radius: 24px 24px 0 0;
+      }
+
+      .auth-card { padding: 27px 22px; }
+    }
+
+    @media (max-width: 390px) {
+      .top-actions .soft-btn { padding: 7px 6px; font-size: .65rem; }
+      .brand { font-size: 1.2rem; }
+      .under-compose span:first-child { display: none; }
+      .under-compose { justify-content: flex-end; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .falling-petal { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Starry sky and animated northern lights -->
+  <div class="cosmos" aria-hidden="true">
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="aurora aurora-three"></div>
+    <div class="starfield"></div>
+  </div>
+
+  <!-- Falling flower animation -->
+  <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="./index.html">Our inbox <span>✦</span></a>
+
+    <div class="top-actions">
+      <button class="soft-btn" id="themeBtn" type="button">☾ Night mode</button>
+      <button class="soft-btn" id="pushBtn" type="button">♧ Notifications</button>
+      <button class="soft-btn" id="logoutBtn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="layout" aria-label="Private messages">
+
+      <aside class="people">
+        <div class="people-head">
+          <h1>Our inbox</h1>
+          <span style="color:#a8f0dc;font-size:1.4rem">♡</span>
+        </div>
+
+        <div class="search">✦ &nbsp; A little corner of the universe</div>
+
+        <div class="person">
+          <div class="avatar">🌷</div>
+          <div style="min-width:0">
+            <div class="person-name">Just us two</div>
+            <div class="person-preview" id="sidebarPreview">
+              Our inbox is waiting for a little note…
+            </div>
+          </div>
+          <span class="online" title="Private inbox"></span>
+        </div>
+
+        <div class="sidebar-bottom">
+          A private little space for words, photos, and all the things
+          we want to remember.
+          <br><br>
+          <span id="loginStatus">Checking your session…</span>
+        </div>
+      </aside>
+
+      <section class="chat">
+        <div class="chat-head">
+          <a href="./index.html" class="avatar"
+             style="text-decoration:none" aria-label="Return home">🌷</a>
+
+          <div>
+            <div class="person-name">Our inbox <span style="color:#a8f0dc">✦</span></div>
+            <div class="tiny-note" id="chatStatus">
+              A tiny universe for the two of us
+            </div>
+          </div>
+
+          <div class="head-tools">
+            <button class="soft-btn" id="refreshBtn" type="button">
+              ↻ Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-stream" id="chatLog" aria-live="polite">
+          <div class="empty-state">
+            <span class="empty-heart">💌</span>
+            <strong>Your story goes here.</strong>
+            <br>
+            Send a message, a tiny thought, or a photo that made you
+            think of each other.
+          </div>
+        </div>
+
+        <div class="compose-wrap">
+          <div class="replying" id="replyingTo"></div>
+
+          <div class="compose">
+            <textarea
+              id="messageText"
+              maxlength="5000"
+              rows="1"
+              placeholder="Message… write your heart out"
+              aria-label="Message"
+            ></textarea>
+
+            <div class="compose-tools">
+              <label class="round-tool"
+                     title="Add a photo"
+                     aria-label="Add a photo"
+                     for="photoInput">＋</label>
+
+              <input
+                id="photoInput"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                hidden
+              >
+
+              <button
+                class="reminder-trigger"
+                id="reminderBtn"
+                type="button"
+                aria-label="Open reminders"
+                aria-expanded="false"
+                title="Little reminders"
+              >♧</button>
+
+              <button class="send" id="sendBtn" type="button">Send</button>
+            </div>
+          </div>
+
+          <div class="under-compose">
+            <span>✦ a little note, across the universe</span>
+            <span id="sendStatus">Private · synced across devices</span>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Reminder drawer -->
+    <div class="reminder-overlay" id="reminderOverlay" aria-hidden="true">
+      <section class="reminders"
+               role="dialog"
+               aria-modal="true"
+               aria-labelledby="reminderTitleHeading">
+
+        <div class="reminder-heading">
+          <div class="reminder-head">
+            <h2 id="reminderTitleHeading">Little reminders 🌷</h2>
+            <span class="status">Tiny things worth remembering</span>
+          </div>
+
+          <button class="reminder-close"
+                  id="closeReminders"
+                  type="button"
+                  aria-label="Close reminders">×</button>
+        </div>
+
+        <form class="reminder-form" id="reminderForm">
+          <input
+            type="text"
+            id="reminderTitle"
+            maxlength="180"
+            placeholder="Remember to drink water…"
+            required
+          >
+
+          <input type="datetime-local" id="reminderDue" required>
+
+          <button class="send" type="submit">Add reminder ＋</button>
+        </form>
+
+        <div class="reminder-list" id="reminderList">
+          <div class="status">
+            Your shared reminders will appear here after signing in.
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Private login -->
+  <div class="auth-gate" id="authGate">
+    <form class="auth-card" id="loginForm">
+      <div style="font-size:2.7rem">🌷💌</div>
+      <h2>Just us two</h2>
+      <p>
+        Some conversations deserve their own little place.
+        <br>Sign in to open yours.
+      </p>
+
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="Email address"
+        autocomplete="username"
+        required
+      >
+
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button class="send" type="submit">Open our inbox ✨</button>
+
+      <div class="auth-error" id="loginError" role="status"></div>
+
+      <div class="status">
+        Private access for the two invited accounts.
+      </div>
+    </form>
+  </div>
+
+  <!-- Flower animation -->
+  <script>
+    (() => {
+      const layer = document.getElementById('petalLayer');
+
+      if (
+        !layer ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) return;
+
+      const flowers = ['🌸', '✿', '❀', '🌷', '✧'];
+
+      for (let i = 0; i < 22; i++) {
+        const petal = document.createElement('span');
+        petal.className = 'falling-petal';
+        petal.textContent =
+          flowers[Math.floor(Math.random() * flowers.length)];
+
+        petal.style.setProperty('--left', `${Math.random() * 100}%`);
+        petal.style.setProperty('--size', `${12 + Math.random() * 12}px`);
+        petal.style.setProperty('--duration', `${16 + Math.random() * 24}s`);
+        petal.style.setProperty('--delay', `${-Math.random() * 38}s`);
+        petal.style.setProperty('--drift', `${-100 + Math.random() * 200}px`);
+        petal.style.setProperty('--opacity', `${.25 + Math.random() * .4}`);
+
+        layer.appendChild(petal);
+      }
+    })();
+  </script>
+
+  <!-- Keep these files in the same GitHub repository -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./supabase-config.js"></script>
+  <script src="./messenger.js"></script>
+</body>
+</html>
