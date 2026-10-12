@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something 🌷</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#98536f">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+ --bg1:#fff6f8;--bg2:#fffaf0;--bg3:#f7f1ff;--text:#513944;--accent:#98536f;
+ --card:#ffffffba;--border:#ffffff;--muted:#886e79;--game:#8f526b;
+}
+body.dark{
+ --bg1:#050817;--bg2:#090b1e;--bg3:#170b27;--text:#eee8ff;--accent:#d9a7ff;
+ --card:#11152ccc;--border:#ffffff1c;--muted:#b9b1d0;--game:#151936;
+}
+body{margin:0;color:var(--text);font-family:"Trebuchet MS",system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 10%,var(--bg2) 0,transparent 25%),
+ radial-gradient(circle at 90% 20%,#ffd9e544 0,transparent 28%),
+ linear-gradient(135deg,var(--bg1),var(--bg2) 52%,var(--bg3));
+ overflow-x:hidden;transition:background .6s,color .35s}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
+ background-image:radial-gradient(#b77d92 1px,transparent 1px);background-size:28px 28px}
+body.dark:before{opacity:.45;background-image:radial-gradient(#fff 1px,transparent 1.5px);background-size:37px 37px}
+header,main,footer{position:relative;z-index:1}
+header{min-height:94vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 18px}
+.hero{max-width:850px;padding:58px 28px;border-radius:40px;background:var(--card);border:1px solid var(--border);
+ backdrop-filter:blur(15px);box-shadow:0 30px 80px #7650641c}
+.kicker{text-transform:uppercase;letter-spacing:4px;font-size:.8rem;color:var(--muted)}
+h1{font:clamp(3.5rem,12vw,7rem)/.9 Georgia,serif;color:var(--accent);margin:18px 0 25px}
+.hero p{max-width:650px;margin:0 auto 28px;line-height:1.8;font-size:1.08rem}
+.btn{border:0;cursor:pointer;text-decoration:none;display:inline-block;padding:13px 22px;border-radius:999px;
+ margin:5px;background:var(--accent);color:white;font-weight:bold;box-shadow:0 9px 25px #98536f2b;transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}.btn.light{background:var(--card);color:var(--accent);border:1px solid var(--border)}
+section{max-width:1050px;margin:auto;padding:75px 18px}
+.title{text-align:center;font:2.5rem Georgia,serif;color:var(--accent);margin:0 0 10px}
+.note{text-align:center;color:var(--muted);margin:0 auto 35px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:28px;min-height:200px;
+ box-shadow:0 18px 45px #65485910;transition:.25s}
+.card:hover{transform:translateY(-7px) rotate(.4deg)}.icon{font-size:2.1rem}.card h3{color:var(--accent);margin:12px 0 8px}.card p{line-height:1.65;margin:0}
+.care{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.carebox{background:var(--card);border:1px solid var(--border);border-radius:30px;padding:30px;box-shadow:0 18px 45px #65485910}
+.carebox h3{font:1.7rem Georgia,serif;color:var(--accent);margin-top:0}
+.choices{display:flex;flex-wrap:wrap;gap:9px}.choice{border:1px solid #efc3d2;background:var(--card);color:var(--text);
+ padding:11px 15px;border-radius:999px;cursor:pointer}.choice:hover{background:#ffeaf122}
+.response{margin-top:18px;min-height:55px;line-height:1.6;color:var(--accent);font-weight:bold}
+.bouquet{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:28px;background:var(--card);border-radius:34px;padding:28px}
+.flowers{text-align:center;font-size:5rem;line-height:1.12;background:linear-gradient(145deg,#fff1f5,#fffbe4);border-radius:28px;padding:35px}
+body.dark .flowers{background:radial-gradient(circle,#33234d,#0d1024)}
+.poem{font:1.35rem/1.8 Georgia,serif;color:var(--text)}.poem small{font:1rem "Trebuchet MS",sans-serif;color:var(--muted)}
+.game{background:var(--game);color:white;border-radius:34px;padding:38px;text-align:center;box-shadow:0 25px 60px #6b405122}
+.game h2{font:2.3rem Georgia,serif;margin-top:0}.arena{position:relative;max-width:700px;height:260px;margin:20px auto;
+ border-radius:25px;background:#ffffff14;border:1px solid #ffffff33;overflow:hidden}
+.target{position:absolute;font-size:2.1rem;background:#ffffff22;border:0;border-radius:50%;width:58px;height:58px;cursor:pointer;
+ transition:transform .1s,opacity .15s;animation:float .8s ease-in-out infinite alternate}
+.target:hover{transform:scale(1.2)}@keyframes float{to{translate:0 5px}}
+.score{font-weight:bold;font-size:1.1rem}.gameMsg{min-height:30px;margin-top:12px}
+.gameMeta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:.95rem;opacity:.9}
+.compliment{background:var(--card);border-radius:34px;padding:38px;text-align:center;box-shadow:0 18px 50px #65485912}
+.complimentText{font:1.65rem/1.55 Georgia,serif;color:var(--accent);min-height:85px}
+.secret{text-align:center;border:2px dashed #e3afc1;background:var(--card);border-radius:34px;padding:42px 25px}
+.secretMsg{display:none;max-width:680px;margin:20px auto;line-height:1.8;font:1.2rem/1.8 Georgia,serif;color:var(--text)}
+footer{text-align:center;padding:30px 20px 60px;color:var(--muted)}.signature{font-family:Georgia,serif;color:var(--accent)}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,30px);background:#6e4354;color:white;padding:13px 20px;
+ border-radius:999px;opacity:0;pointer-events:none;transition:.3s;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}
+/* Sidebar */
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;z-index:80;padding:24px 18px;
+ background:rgba(255,255,255,.78);backdrop-filter:blur(20px);border-right:1px solid #ffffffaa;
+ transform:translateX(-100%);transition:transform .35s ease;box-shadow:10px 0 40px #00000012}
+body.dark .sidebar{background:rgba(7,9,25,.82);border-right-color:#ffffff18;box-shadow:10px 0 50px #0008}
+.sidebar.open{transform:translateX(0)}
+.sidebar h2{font:1.8rem Georgia,serif;color:var(--accent);margin:18px 10px 30px}
+.navBtn{width:100%;display:block;text-align:left;padding:14px 15px;margin:7px 0;border:0;border-radius:14px;
+ background:transparent;color:var(--text);font-weight:bold;cursor:pointer;transition:.2s}
+.navBtn:hover{background:#98536f18;transform:translateX(4px)}
+.menuToggle,.themeToggle{position:fixed;z-index:90;top:18px;border:0;cursor:pointer;border-radius:50%;width:48px;height:48px;
+ background:var(--card);color:var(--text);box-shadow:0 8px 25px #0002;backdrop-filter:blur(12px);font-size:1.2rem}
+.menuToggle{left:18px}.themeToggle{right:18px}
+.overlay{position:fixed;inset:0;background:#0006;z-index:70;opacity:0;pointer-events:none;transition:.3s}
+.overlay.show{opacity:1;pointer-events:auto}
+.contactPanel{position:fixed;right:22px;bottom:22px;z-index:85;width:min(360px,calc(100vw - 44px));padding:25px;border-radius:25px;
+ background:var(--card);border:1px solid var(--border);backdrop-filter:blur(18px);box-shadow:0 25px 70px #0003;
+ transform:translateY(30px);opacity:0;pointer-events:none;transition:.3s}
+.contactPanel.show{transform:translateY(0);opacity:1;pointer-events:auto}
+.contactPanel h3{color:var(--accent);font:1.6rem Georgia,serif;margin-top:0}.contactPanel p{line-height:1.7;margin:7px 0}
+.closeContact{float:right;border:0;background:none;color:var(--text);font-size:1.3rem;cursor:pointer}
+/* Night sky */
+.nightSky{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .7s;overflow:hidden}
+body.dark .nightSky{opacity:1}
+.nebula{position:absolute;inset:-20%;background:
+ radial-gradient(ellipse at 25% 30%,#6d38a844,transparent 30%),
+ radial-gradient(ellipse at 75% 65%,#284fbf44,transparent 28%),
+ radial-gradient(ellipse at 55% 15%,#cf4fb533,transparent 25%);
+ filter:blur(30px);animation:nebulaMove 18s ease-in-out infinite alternate}
+.stars{position:absolute;inset:0;background-image:
+ radial-gradient(circle,#fff 1px,transparent 1.5px),radial-gradient(circle,#d9c9ff 1px,transparent 1.5px);
+ background-size:83px 83px,137px 137px;background-position:10px 20px,50px 80px;animation:starDrift 30s linear infinite}
+.moon{position:absolute;right:9%;top:8%;width:100px;height:100px;border-radius:50%;
+ background:radial-gradient(circle at 35% 32%,#fff 0 42%,#dcd7ff 65%,#aaa5d5 100%);
+ box-shadow:0 0 45px #fff8,0 0 100px #a99cff55}
+@keyframes nebulaMove{to{transform:scale(1.08) rotate(3deg)}}@keyframes starDrift{to{transform:translate(25px,15px)}}
+/* Petals / falling hearts */
+.petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.petal{position:absolute;top:-30px;width:13px;height:19px;background:#ffc5d8;border-radius:70% 20% 70% 20%;opacity:.6;animation:fall linear infinite}
+.petal:nth-child(1){left:7%;animation-duration:6s}.petal:nth-child(2){left:19%;animation-duration:8s;animation-delay:1s}
+.petal:nth-child(3){left:35%;animation-duration:7s;animation-delay:.5s}.petal:nth-child(4){left:52%;animation-duration:9s;animation-delay:2s}
+.petal:nth-child(5){left:71%;animation-duration:6.5s;animation-delay:1s}.petal:nth-child(6){left:89%;animation-duration:7.5s}
+@keyframes fall{to{transform:translate(100px,110vh) rotate(420deg)}}
+body.dark .petal{background:#ffb7e4;box-shadow:0 0 10px #ff9ddd}
+@media(max-width:760px){
+ .grid,.care,.bouquet{grid-template-columns:1fr}.flowers{font-size:4rem}.arena{height:220px}
+ section{padding:55px 15px}.sidebar{width:280px}
+}
+
+/* Private access + messenger additions */
+.authGate{position:fixed;inset:0;z-index:500;background:radial-gradient(circle at 20% 10%,#ffe1ec,transparent 35%),linear-gradient(135deg,#fff6f8,#f7f1ff);display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+body.dark .authGate{background:radial-gradient(circle at 20% 10%,#332044,transparent 35%),linear-gradient(135deg,#050817,#170b27)}
+.authCard{width:min(440px,100%);padding:32px;border-radius:30px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(18px);box-shadow:0 25px 80px #4a243522;text-align:center}
+.authCard h2{font:2.2rem Georgia,serif;color:var(--accent);margin:8px 0 12px}.authCard p{line-height:1.6;color:var(--muted)}
+.field{display:block;width:100%;padding:13px 15px;margin:10px 0;border:1px solid #dcb8c8;border-radius:14px;background:var(--card);color:var(--text);font:inherit}
+.authError{color:#b42348;min-height:24px;font-size:.92rem}.authStatus{font-size:.9rem;color:var(--muted);margin-top:12px}
+#accountBar{display:none;position:relative;z-index:2;max-width:1050px;margin:15px auto 0;padding:0 18px;text-align:right;color:var(--muted)}
+.messengerWrap{background:var(--card);border:1px solid var(--border);border-radius:30px;padding:24px;box-shadow:0 18px 45px #65485910}
+.chatLog{height:340px;overflow:auto;padding:14px;border-radius:20px;background:#98536f0a;border:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+.bubble{max-width:82%;padding:12px 15px;border-radius:18px;background:var(--card);border:1px solid var(--border);align-self:flex-start;overflow-wrap:anywhere;white-space:pre-wrap}
+.bubble.mine{align-self:flex-end;background:#98536f20}.bubble small{display:block;margin-top:6px;color:var(--muted);font-size:.75rem}.bubble img{display:block;max-width:100%;max-height:240px;border-radius:12px;margin-top:8px}
+.chatControls{display:grid;grid-template-columns:1fr auto;gap:9px;margin-top:12px}.chatControls textarea{resize:vertical;min-height:48px;max-height:130px}
+.chatActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}.miniBtn{border:1px solid #e4bfd0;background:var(--card);color:var(--text);padding:10px 14px;border-radius:999px;cursor:pointer;font:inherit}
+.reminderList{display:grid;gap:9px;margin-top:15px}.reminderItem{padding:13px;border:1px solid var(--border);border-radius:15px;background:var(--card);display:flex;gap:12px;align-items:center;justify-content:space-between}
+.reminderItem.done{text-decoration:line-through;opacity:.65}.privateTag{font-size:.78rem;color:var(--muted);text-align:center;margin-top:10px}
+@media(max-width:600px){.messengerWrap{padding:15px}.chatLog{height:300px}.chatControls{grid-template-columns:1fr}.authCard{padding:24px}}
+
+</style>
+</head>
+<body>
+<div class="nightSky"><div class="nebula"></div><div class="stars"></div><div class="moon"></div></div>
+<button class="menuToggle" id="menuToggle" aria-label="Open menu">☰</button>
+<button class="themeToggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+<div class="overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+  <h2>🌷 A Little Something</h2>
+  <button class="navBtn" onclick="goTo('top')">⌂ &nbsp; Home</button>
+  <button class="navBtn" onclick="goTo('care')">☁️ &nbsp; Little Check-in</button>
+  <button class="navBtn" onclick="goTo('game')">💗 &nbsp; Catch the Hearts</button>
+  <button class="navBtn" onclick="goTo('notes')">💌 &nbsp; Notes</button>
+  <button class="navBtn" onclick="goTo('messenger')">💌 &nbsp; Our Messages</button>
+  <button class="navBtn" onclick="showContact()">📩 &nbsp; Contact</button>
+</aside>
+<div class="contactPanel" id="contactPanel">
+  <button class="closeContact" onclick="hideContact()">×</button>
+  <h3>Contact ✨</h3>
+  <p><strong>Ankur Thakuria</strong></p>
+  <p>📞 6002815166</p>
+  <p>✉️ ankurthakuria2023@gmail.com</p>
+</div>
+<div class="petals"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i></div>
+<div class="toast" id="toast"></div>
+<div id="accountBar"><span id="signedInLabel"></span> &nbsp; <button class="miniBtn" id="enablePushBtn">🔔 Enable notifications</button> <button class="miniBtn" id="signOutBtn">Sign out</button></div>
+<div class="authGate" id="authGate">
+ <form class="authCard" id="loginForm">
+  <div style="font-size:3rem">🌷💌</div><h2>A Little Something</h2>
+  <p>A little corner, just for the two of us.<br>Sign in to open it.</p>
+  <input class="field" id="loginEmail" type="email" autocomplete="username" placeholder="Email address" required>
+  <input class="field" id="loginPassword" type="password" autocomplete="current-password" placeholder="Password" required>
+  <button class="btn" type="submit" style="width:100%;margin:8px 0">Open our little world ✨</button>
+  <div class="authError" id="loginError" role="status"></div>
+  <div class="authStatus">Private access for invited accounts only.</div>
+ </form>
+</div>
+
+<header id="top">
+<div class="hero">
+<div class="kicker">a tiny corner of the internet, made with care</div>
+<h1>For you. Kritika 🌷</h1>
+<p>
+Some people arrive quietly and somehow make the ordinary feel softer.
+So this little page exists for no grand reason — just flowers, tiny reminders,
+a few smiles, and some words that were worth putting somewhere.
+</p>
+<a class="btn" href="#care">Come in ✨</a>
+<a class="btn light" href="#game">Play a little 🎀</a>
+</div>
+</header>
+
+<main>
+<section id="care">
+<h2 class="title">A tiny check-in ☁️</h2>
+<p class="note">Because pretty days deserve little pauses too.</p>
+<div class="care">
+<div class="carebox">
+<h3>Have you had enough water? 💧</h3>
+<p>A very small reminder from the internet: go take a sip. Your future self will approve.</p>
+<div class="choices">
+<button class="choice" onclick="care('water','Yes 💧')">Yes, I did</button>
+<button class="choice" onclick="care('water','Not yet')">Not yet</button>
+</div>
+<div class="response" id="water"></div>
+</div>
+<div class="carebox">
+<h3>How are you feeling today? 🌙</h3>
+<p>No correct answer. Pick the little cloud that feels closest.</p>
+<div class="choices">
+<button class="choice" onclick="mood('☀️','sunny')">☀️</button>
+<button class="choice" onclick="mood('🌸','soft')">🌸</button>
+<button class="choice" onclick="mood('🌧️','rainy')">🌧️</button>
+<button class="choice" onclick="mood('🌙','tired')">🌙</button>
+</div>
+<div class="response" id="mood"></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="bouquet">
+<div class="flowers">🌷🌸🌼<br>🌹💐🌻<br>🌺🌷🌸</div>
+<div>
+<h2 class="title" style="text-align:left">Flowers, because words sometimes need company.</h2>
+<p class="poem">
+“May your difficult days become gentler,<br>
+your quiet moments become peaceful,<br>
+and your happiest moments last<br>
+just a little longer.”
+<br><br><small>— a little thought from Ankur</small>
+</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="title">A few observations ✨</h2>
+<p class="note">Completely scientific. Probably.</p>
+<div class="grid">
+<div class="card"><div class="icon">🌸</div><h3>The smile effect</h3><p>There are smiles that look nice, and then there are smiles that somehow change the atmosphere of a whole conversation.(Plsss send me selfies)</p></div>
+<div class="card"><div class="icon">🦋</div><h3>The little things</h3><p>It is rarely the grand gestures that stay with us. Sometimes it is a laugh, a sentence, a look, or a tiny habit.</p></div>
+<div class="card"><div class="icon">✨</div><h3>Quite unfair, honestly</h3><p>Being this effortlessly charming should probably come with a warning label. Just saying.(Flirting kribo hiki asu btw)</p></div>
+</div>
+</section>
+
+<section>
+<div class="compliment">
+<h2 class="title">The compliment constellation ✨</h2>
+<p class="note">Press the button. Let a random star do the talking.</p>
+<div class="complimentText" id="compliment">Somewhere between ordinary and extraordinary, there is a very nice person.</div>
+<button class="btn" onclick="compliment()">Find another ✨</button>
+</div>
+</section>
+
+<section id="game">
+<div class="game">
+<h2>Catch the little hearts 💗</h2>
+<p>They're faster now. Catch all 15 before the timer runs out!</p>
+<div class="gameMeta"><span>⏱️ Time: <b id="timer">20</b>s</span><span>🔥 Combo: <b id="combo">0</b></span><span>🏆 Best: <b id="best">0</b></span></div>
+<div class="arena" id="arena"></div>
+<div class="score">Caught: <span id="score">0</span> / 15</div>
+<div class="gameMsg" id="gameMsg">Ready? 🎀</div>
+<button class="btn" onclick="startGame()">Start again</button>
+</div>
+</section>
+
+<section>
+<div class="secret">
+<h2 class="title">A little note tucked away 💌</h2>
+<p>Not everything needs a dramatic ending. Some things are nicer when they simply make you smile.</p>
+<button class="btn" onclick="reveal()">Open the note</button>
+<div class="secretMsg" id="secretMsg">
+“I like you dawg :)”<br><br>
+— <strong>Ankur</strong> 🌷
+</div>
+</div>
+</section>
+</main>
+
+
+<section id="messenger">
+ <h2 class="title">Our little inbox 💌</h2>
+ <p class="note">Messages, tiny moments, photos, and reminders — shared between our devices.</p>
+ <div class="messengerWrap">
+  <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
+   <strong style="color:var(--accent);font:1.35rem Georgia,serif">Just us two 🌙</strong>
+   <span id="chatStatus" class="authStatus">Sign in to load your conversation.</span>
+  </div>
+  <div id="chatLog" class="chatLog" aria-live="polite"><div class="privateTag">Your shared conversation will appear here.</div></div>
+  <div class="chatControls"><textarea class="field" id="messageText" maxlength="5000" placeholder="Write a little something…" aria-label="Message"></textarea><button class="btn" id="sendMessageBtn" type="button">Send 💗</button></div>
+  <div class="chatActions"><label class="miniBtn" for="photoInput">📷 Add photo / snap</label><input id="photoInput" type="file" accept="image/*" capture="environment" hidden><button class="miniBtn" id="refreshChatBtn" type="button">↻ Refresh</button></div>
+  <div class="privateTag">Photos are stored in a private bucket. Only the two approved accounts can read this conversation.</div>
+ </div>
+ <div class="messengerWrap" style="margin-top:18px">
+  <h3 style="font:1.7rem Georgia,serif;color:var(--accent);margin-top:0">Little reminders 🌷</h3>
+  <form id="reminderForm" class="chatActions"><input class="field" id="reminderTitle" maxlength="180" placeholder="e.g. Drink some water 💧" required style="flex:1;min-width:180px;margin:0"><input class="field" id="reminderDue" type="datetime-local" required style="flex:1;min-width:180px;margin:0"><button class="btn" type="submit">Add reminder</button></form>
+  <div id="reminderList" class="reminderList"><div class="privateTag">Your reminders will sync here.</div></div>
+  <div class="privateTag">Scheduled push reminders require the optional GitHub Actions + Supabase Edge Function setup in README.</div>
+ </div>
+</section>
+
+<footer>
+And Pleaseeeee muk kid buli nkbaaa (Just 4 months dangor apuni)<br>
+<span class="signature">— Ankur</span> ✨
+</footer>
+
+<script>
+const compliments=[
+"Your smile has the strange ability to make a normal moment feel like a good memory.",
+"Some people are beautiful in photographs. Some make the whole moment feel beautiful.",
+"You have the kind of charm that doesn't need an introduction.",
+"Somewhere between cute and completely unforgettable, there is you.",
+"If sunshine had a quieter, softer version, it might look a little like your vibe.",
+"You make ordinary conversations feel like little stories worth remembering.",
+"Being effortlessly adorable is a suspiciously powerful talent.",
+"Some people are easy to notice. Some are impossible not to notice."
+];
+
+const $=id=>document.getElementById(id);
+
+function compliment(){
+ const el=$("compliment");el.style.opacity=0;
+ setTimeout(()=>{el.textContent=compliments[Math.floor(Math.random()*compliments.length)];el.style.opacity=1},160);
+}
+function care(id,value){
+ const el=$(id);
+ el.textContent=value==="Yes 💧"?"Good. Tiny victories count. 🌷":"Then this is your tiny reminder: go have a sip when you can. 💧";
+}
+function mood(icon,word){
+ const messages={
+ sunny:"Keep that little sunshine. The world needs more of it. ☀️",
+ soft:"A soft day is still a good day. Take it gently. 🌸",
+ rainy:"Rainy days are allowed. Be a little kinder to yourself today. 🌧️",
+ tired:"Then today can be a slower day. Rest is allowed. 🌙"
+ };
+ $("mood").textContent=icon+" "+messages[word];
+}
+function reveal(){
+ const el=$("secretMsg");el.style.display="block";
+ el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function goTo(id){
+ closeMenu();
+ const el=$(id); if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function openMenu(){ $("sidebar").classList.add("open"); $("overlay").classList.add("show"); }
+function closeMenu(){ $("sidebar").classList.remove("open"); $("overlay").classList.remove("show"); }
+$("menuToggle").onclick=()=> $("sidebar").classList.contains("open")?closeMenu():openMenu();
+$("overlay").onclick=closeMenu;
+
+function showContact(){closeMenu();$("contactPanel").classList.add("show")}
+function hideContact(){$("contactPanel").classList.remove("show")}
+
+function setTheme(dark){
+ document.body.classList.toggle("dark",dark);
+ $("themeToggle").textContent=dark?"☀️":"🌙";
+ localStorage.setItem("littleSomethingDark",dark?"1":"0");
+}
+setTheme(localStorage.getItem("littleSomethingDark")==="1");
+$("themeToggle").onclick=()=>setTheme(!document.body.classList.contains("dark"));
+
+let score=0,playing=false,timeLeft=20,combo=0,timerId=null,spawnId=null;
+const TOTAL=15;
+
+function startGame(){
+ clearInterval(timerId);clearTimeout(spawnId);
+ const arena=$("arena");arena.innerHTML="";score=0;combo=0;timeLeft=20;playing=true;
+ $("score").textContent=0;$("combo").textContent=0;$("timer").textContent=timeLeft;
+ $("gameMsg").textContent="GO! They're falling faster! 💗";
+ $("best").textContent=localStorage.getItem("heartBest")||0;
+ spawnHeart();
+ timerId=setInterval(()=>{
+   timeLeft--; $("timer").textContent=timeLeft;
+   if(timeLeft<=0) endGame(false);
+ },1000);
+}
+function spawnHeart(){
+ if(!playing || score>=TOTAL)return;
+ const arena=$("arena");
+ const b=document.createElement("button");
+ b.className="target";b.textContent=["💗","🌷","✨","💞","💕"][Math.floor(Math.random()*5)];
+ b.style.left=(Math.random()*86+4)+"%";
+ b.style.top=(Math.random()*70+4)+"%";
+ b.style.animationDuration=(.35+Math.random()*.45)+"s";
+ b.onclick=()=>{
+   if(!playing)return;
+   score++;combo++;
+   b.remove();
+   $("score").textContent=score;$("combo").textContent=combo;
+   if(score===TOTAL){endGame(true);return;}
+   spawnHeart();
+ };
+ arena.appendChild(b);
+ // Heart disappears quickly, making missed targets matter.
+ setTimeout(()=>{if(b.isConnected)b.remove();if(playing)spawnHeart()},700);
+}
+function endGame(won){
+ playing=false;clearInterval(timerId);clearTimeout(spawnId);
+ const best=Number(localStorage.getItem("heartBest")||0);
+ if(score>best){localStorage.setItem("heartBest",score);$("best").textContent=score}
+ $("gameMsg").textContent=won?"YOU GOT THEM ALL! 🌸🏆":"Time's up! Catch them quicker next round! 💗";
+ toast(won?"Achievement unlocked: 15/15 ✨":"Time's up — try again! ⏱️");
+}
+function toast(t){
+ const x=$("toast");x.textContent=t;x.classList.add("show");
+ setTimeout(()=>x.classList.remove("show"),2200)
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase-config.js"></script>
+<script src="./messenger.js"></script>
+</body>
+</html>
