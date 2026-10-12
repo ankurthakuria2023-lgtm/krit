@@ -1,9 +1,0 @@
-{
-  "name": "A Little Something",
-  "short_name": "Little Something",
-  "start_url": "./#messenger",
-  "display": "standalone",
-  "background_color": "#fff6f8",
-  "theme_color": "#98536f",
-  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
-}
